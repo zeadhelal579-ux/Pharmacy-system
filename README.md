@@ -32,6 +32,6 @@ npm run preview
 
 ## Vercel
 
-اختار الريبو وفرع `front-Deploy`. **Root Directory** هو جذر الفرع لأن `package.json` و`vercel.json` موجودين فيه. لو اخترت النشر من `main` بدل فرع الديمو، حدد `front Deploy/pharmacy-web-demo` كـRoot Directory.
+اختار الريبو واضبط **Production Branch** على `front-Deploy`. سيب **Root Directory** على جذر الفرع لأن `package.json` و`vercel.json` موجودين فيه.
 
 الملف [vercel.json](vercel.json) يحدد Vite و`npm ci` و`npm run build` ومجلد `dist`. فيه تحويل داخلي لـ`index.html` عشان المسارات زي `/pos` و`/receipts/1001` تفتح مباشرة، وترويسات لمحتوى النسخة الثابتة. اختار Node.js 24.x. إعدادات Environment Variables تقدر تسيبها فارغة.
