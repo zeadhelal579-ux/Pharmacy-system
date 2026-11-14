@@ -35,4 +35,4 @@ npm run build
 npm run preview
 ```
 
-الـbuild بيطلع في `dist`. اختبار المتصفح والـAPI المتكامل بيتشغل من `main` باستخدام `tests-audit/Run-Integration.ps1` وقاعدة LocalDB منفصلة. نسخة العرض المستقلة بتتوزع من فرع `front-Deploy`.
+الـbuild بيطلع في `dist`. شغّل الـAPI من فرع [`back-end`](https://github.com/zeadhelal579-ux/Pharmacy-system/tree/back-end) لتجربة الواجهة المتصلة. نسخة العرض المستقلة موجودة في فرع [`front-Deploy`](https://github.com/zeadhelal579-ux/Pharmacy-system/tree/front-Deploy).
