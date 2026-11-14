@@ -4,14 +4,12 @@ PharmacyERP نظام لإدارة صيدلية متعددة الفروع ومخ�
 
 ## الفروع
 
-| الفرع | محتواه في `main` | التوثيق |
-|---|---|---|
-| `main` | المشروع المتكامل وخطة التشغيل والاختبارات | الملف ده |
-| `back-end` | `back-end/PharmacyERP` | [شرح الباك](back-end/PharmacyERP/README.md) |
-| `front-end` | `front-end/pharmacy-web` | [شرح الفرونت](front-end/pharmacy-web/README.md) |
-| `front-Deploy` | `front Deploy/pharmacy-web-demo` | [شرح الديمو والنشر](front%20Deploy/pharmacy-web-demo/README.md) |
-
-الفروع المتخصصة بتعرض مجلد المكوّن نفسه من جذر الفرع. استخدم `main` لو عايز تشغّل الفرونت والباك والاختبارات سوا.
+| الفرع | المحتوى |
+|---|---|
+| [`main`](https://github.com/zeadhelal579-ux/Pharmacy-system/tree/main) | الـREADME الرئيسي ونظرة على المشروع |
+| [`back-end`](https://github.com/zeadhelal579-ux/Pharmacy-system/tree/back-end) | ASP.NET Core API وقاعدة SQL Server وتعليمات التشغيل |
+| [`front-end`](https://github.com/zeadhelal579-ux/Pharmacy-system/tree/front-end) | واجهة React المتصلة بالـAPI |
+| [`front-Deploy`](https://github.com/zeadhelal579-ux/Pharmacy-system/tree/front-Deploy) | ديمو React المستقل المخصص للنشر على Vercel |
 
 ## سير الشغل
 
@@ -29,23 +27,13 @@ PharmacyERP نظام لإدارة صيدلية متعددة الفروع ومخ�
 | الكاشير | البيع وفتح وإقفال الشيفت والفواتير ومرتجع البيع |
 | مسؤول المخزن | الاستلام والمخزون والجرد والتحويلات وعزل الدفعات حسب صلاحيات الموقع |
 
-## التشغيل المتكامل
+## التشغيل المحلي
 
-- ثبّت Node.js 24 و‎.NET 10 SDK وSQL Server. خطوات Windows LocalDB وتكوين حساب المدير في [دليل التشغيل المحلي](Resource/local-development.md).
-- شغّل API على `127.0.0.1:5277` والفرونت على `127.0.0.1:5173`. Vite بيمرر `/api` و`/health` للباك. ASP.NET Core بيتحقق من JWT والدور والموقع، وEF Core بيحفظ البيانات في SQL Server.
-- شغّل الديمو من مجلده بـ `npm ci` ثم `npm run dev`. فيه حسابات دور بضغطة واحدة وبيانات فرعين ومخزن مركزي. الديمو بيشتغل بالكامل داخل المتصفح، والتغييرات التجريبية محفوظة عند المستخدم ويمكن استرجاع بيانات البداية.
+شغّل الباك من فرع `back-end` باستخدام .NET 10 وSQL Server، وبعدها شغّل فرع `front-end` باستخدام Node.js 24. الـAPI المحلي على `127.0.0.1:5277` والواجهة على `127.0.0.1:5173`. Vite بيمرر طلبات `/api` و`/health` للباك. خطوات الإعداد في README كل فرع.
 
-## الاختبارات
+## ديمو Vercel
 
-```powershell
-npm ci --prefix front-end/pharmacy-web
-npm run build --prefix front-end/pharmacy-web
-npm ci --prefix tests-audit
-dotnet build back-end/PharmacyERP/PharmacyERP.slnx
-pwsh -NoProfile -File tests-audit/Run-Integration.ps1 -Browser msedge -Width 390 -BackupRestore
-```
-
-تشغيل التكامل بينشئ قاعدة باسم فريد على LocalDB، ويشغّل الفرونت المبني مع الباك. تمرين الاستعادة يحتاج `sqlcmd`. نتائج التحقق وحدودها في [تقرير الإصدار](audit-report/RELEASE-AUDIT.md). دراسة النطاق في [الخطة](Resource/blueprint.md) و[محاكاة شهر تشغيل](Resource/30-day-operations.md).
+فرع النشر هو **`front-Deploy`**. في Vercel اختاره كـ **Production Branch** وسيب **Root Directory** على جذر الفرع. إعدادات Vite والبناء موجودة في `vercel.json`. الديمو فيه دخول بضغطة واحدة وبيانات فرعين ومخزن، وبيشتغل بالكامل داخل المتصفح.
 
 ## نطاق التشغيل
 
