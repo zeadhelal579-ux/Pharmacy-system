@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-ssr/
+.vercel/
+.env
+.env.*
+!.env.example
+*.local
+*.log
+*.tsbuildinfo
+coverage/
+test-results/
+playwright-report/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
